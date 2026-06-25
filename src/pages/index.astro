@@ -1,0 +1,71 @@
+---
+import Base from "../layouts/Base.astro";
+import Preloader from "../components/Preloader.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Servicios from "../components/sections/Servicios.astro";
+import Experiencia from "../components/sections/Experiencia.astro";
+import Galeria from "../components/sections/Galeria.astro";
+import Reserva from "../components/sections/Reserva.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Base>
+  <Preloader />
+  <Nav />
+  <main class="js-anim">
+    <Hero />
+    <Servicios />
+    <Experiencia />
+    <Galeria />
+    <Reserva />
+  </main>
+  <Footer />
+</Base>
+
+<script>
+  import { initSmoothScroll } from "../scripts/smooth-scroll";
+  import { initHeroScene } from "../scripts/hero-scene";
+  import {
+    runPreloader,
+    animateHero,
+    initServicios,
+    initReveals,
+  } from "../scripts/animations";
+  import { initBooking } from "../scripts/booking";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  function boot() {
+    initSmoothScroll();
+
+    // Escena 3D del hero
+    const canvas = document.getElementById("hero-canvas") as HTMLCanvasElement | null;
+    if (canvas) {
+      try {
+        initHeroScene(canvas);
+      } catch (err) {
+        console.warn("Three.js no disponible:", err);
+      }
+    }
+
+    // Animaciones de scroll
+    initServicios();
+    initReveals();
+    initBooking();
+
+    // Preloader y entrada del hero
+    runPreloader(() => {
+      animateHero();
+      ScrollTrigger.refresh();
+    });
+
+    // Refresh tras cargar fuentes/imágenes
+    window.addEventListener("load", () => ScrollTrigger.refresh());
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+</script>

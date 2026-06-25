@@ -1,0 +1,69 @@
+---
+import GraffitiTitle from "../GraffitiTitle.astro";
+
+const servicios = [
+  {
+    n: "01",
+    titulo: "Corte",
+    desc: "Fade, tijera, diseño. El corte que va con tu cara y tu actitud.",
+    precio: "$",
+  },
+  {
+    n: "02",
+    titulo: "Barba",
+    desc: "Perfilado, toalla caliente y aceites. Tu barba, su mejor versión.",
+    precio: "$",
+  },
+  {
+    n: "03",
+    titulo: "Afeitado clásico",
+    desc: "Navaja, espuma y ritual a la vieja escuela. Piel impecable.",
+    precio: "$",
+  },
+  {
+    n: "04",
+    titulo: "Combo King ♛",
+    desc: "Corte + barba + detalle premium. El tratamiento de realeza.",
+    precio: "$",
+  },
+];
+---
+
+<section id="servicios" class="relative overflow-hidden bg-[var(--bg)] py-24" data-services>
+  <div class="spray-deco left-[2%] top-[6%] h-72 w-72 rotate-[-6deg]"></div>
+  <div class="relative px-5 md:px-10">
+    <p class="font-tag text-base tracking-wide text-[var(--accent)]">// lo que hacemos</p>
+    <h2 class="display mt-2 -skew-x-6 text-6xl md:text-8xl">
+      <GraffitiTitle text="Servicios" color="var(--accent)" dripScale={0.7} />
+    </h2>
+  </div>
+
+  <!-- Track horizontal (pinned por GSAP en desktop; scroll natural en mobile) -->
+  <div class="services-viewport mt-14 overflow-hidden">
+    <div class="services-track flex gap-6 px-5 md:px-10">
+      {
+        servicios.map((s) => (
+          <article class="service-card group relative flex h-[60vh] w-[80vw] shrink-0 flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-[var(--surface,#141414)] p-8 md:w-[42vw] lg:w-[34vw]">
+            <span class="display text-7xl text-white/5 transition-colors group-hover:text-[var(--accent)]/20 md:text-8xl">
+              {s.n}
+            </span>
+            <div>
+              <h3 class="display text-4xl text-white md:text-5xl">{s.titulo}</h3>
+              <p class="mt-3 max-w-xs text-sm text-white/60">{s.desc}</p>
+              <div class="mt-6 flex items-center gap-3">
+                <span class="text-2xl font-bold text-[var(--accent)]">{s.precio}</span>
+                <a
+                  href="#reserva"
+                  class="rounded-full border border-white/20 px-4 py-1.5 text-xs uppercase tracking-widest text-white/80 transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                >
+                  Reservar
+                </a>
+              </div>
+            </div>
+            <div class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[var(--accent)] opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-20" />
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

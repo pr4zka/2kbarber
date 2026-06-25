@@ -1,0 +1,46 @@
+---
+// Storytelling con parallax y reveals por línea.
+---
+
+<section
+  id="experiencia"
+  class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-[var(--bg-deep,#050505)] py-32"
+>
+  <!-- Mancha de pintura parallax -->
+  <div
+    data-parallax="0.2"
+    class="pointer-events-none absolute -left-20 top-20 h-80 w-80 rounded-full bg-[var(--accent)] opacity-[0.12] blur-[120px]"
+  >
+  </div>
+  <div
+    data-parallax="-0.15"
+    class="pointer-events-none absolute -right-10 bottom-10 h-96 w-96 rounded-full bg-[var(--accent-deep,#fc277c)] opacity-[0.1] blur-[140px]"
+  >
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-5xl px-6">
+    <p class="font-tag text-base tracking-wide text-[var(--accent)]">// la experiencia</p>
+
+    <h2 class="display mt-4 text-4xl leading-tight text-white md:text-7xl">
+      <span data-split class="block">Entrás por un corte.</span>
+      <span data-split class="block">
+        Salís siendo <span class="text-[var(--accent)]">otro</span>.
+      </span>
+    </h2>
+
+    <div class="mt-14 grid gap-10 md:grid-cols-3">
+      {
+        [
+          { t: "Sin apuro", d: "Tu turno es tuyo. Acá nadie te corre de la silla." },
+          { t: "Música y birra", d: "Ambiente street, buena música y la previa perfecta." },
+          { t: "Detalle de rey", d: "Cada corte cierra con un toque que se nota." },
+        ].map((b) => (
+          <div data-reveal class="border-l-2 border-[var(--accent)] pl-5">
+            <h3 class="display text-2xl text-white">{b.t}</h3>
+            <p class="mt-2 text-sm text-white/60">{b.d}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

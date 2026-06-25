@@ -1,0 +1,37 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="relative border-t border-white/10 bg-[var(--bg)] px-5 py-14 md:px-10">
+  <div class="mx-auto flex max-w-6xl flex-col gap-10 md:flex-row md:justify-between">
+    <div>
+      <div class="flex items-center gap-3">
+        <img src="/logo.png" alt="2K Barber Shop" class="h-14 w-14 object-contain" />
+        <span class="display text-2xl text-white">2K Barber Shop</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-8 text-sm">
+      <div>
+        <h4 class="mb-3 text-xs uppercase tracking-widest text-[var(--accent)]">Horarios</h4>
+        <ul class="space-y-1 text-white/60">
+          <li>Lun a Vie · 9 a 20h</li>
+          <li>Sábado · 9 a 18h</li>
+          <li>Domingo · cerrado</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="mb-3 text-xs uppercase tracking-widest text-[var(--accent)]">Contacto</h4>
+        <ul class="space-y-1 text-white/60">
+          <li><a href="#" class="hover:text-white">Instagram</a></li>
+          <li><a href="#" class="hover:text-white">WhatsApp</a></li>
+          <li><a href="#reserva" class="hover:text-white">Reservar turno</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto mt-12 max-w-6xl border-t border-white/5 pt-6 text-xs text-white/30">
+    © {year} 2K Barber Shop. Todos los derechos reservados.
+  </div>
+</footer>

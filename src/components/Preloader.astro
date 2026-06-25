@@ -1,0 +1,44 @@
+---
+// Pantalla de carga (solo al cargar): pintura rosa en spray que chorrea y
+// revela el sitio. Al terminar, todo el preloader se va y la página queda normal.
+import PaintOverlay from "./PaintOverlay.astro";
+---
+
+<div
+  id="preloader"
+  class="fixed inset-0 z-[9999] overflow-hidden bg-[var(--bg-deep,#050505)]"
+>
+  <!-- Pintura rosa chorreando desde arriba (efecto de carga) -->
+  <PaintOverlay />
+
+  <!-- Spray / splatter -->
+  <div
+    id="pre-spray-1"
+    class="spray-deco left-[8%] top-[20%] h-72 w-72 rotate-[-10deg] md:h-[28rem] md:w-[28rem]"
+  >
+  </div>
+  <div
+    id="pre-spray-2"
+    class="spray-deco right-[6%] bottom-[14%] h-64 w-64 rotate-[14deg] md:h-96 md:w-96"
+  >
+  </div>
+
+  <!-- Logo + contador -->
+  <div class="absolute inset-0 flex flex-col items-center justify-center">
+    <img
+      id="preloader-logo"
+      src="/logo.png"
+      alt="2K Barber Shop"
+      class="h-40 w-40 object-contain md:h-56 md:w-56"
+      style="clip-path: inset(100% 0 0 0);"
+    />
+    <div class="mt-8 flex items-baseline gap-3">
+      <span
+        id="preloader-count"
+        class="display text-5xl text-[var(--accent)] glow md:text-7xl">0</span
+      >
+      <span class="display text-2xl text-white/40 md:text-3xl">%</span>
+    </div>
+    <p class="mt-4 text-xs uppercase tracking-[0.4em] text-white/40">2K Barber Shop</p>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+---
+// Efecto graffiti reusable para cualquier título:
+//  - letras con textura de spray (fuente Rubik Dirt, vía .display del padre)
+//  - goteo de pintura real (gotas-mask) colgando del pie de la palabra
+//  - glow neón del color elegido
+// Uso: <GraffitiTitle text="Servicios" color="var(--accent)" />
+interface Props {
+  text: string;
+  color?: string; // color de la pintura (texto + gotas + glow)
+  dripScale?: number; // largo del goteo (1 = normal)
+  class?: string;
+}
+const {
+  text,
+  color = "var(--accent)",
+  dripScale = 1,
+  class: className = "",
+} = Astro.props;
+const gh = (0.7 * dripScale).toFixed(2);
+---
+
+<span class={`graff ${className}`} style={`--gc:${color}; --gh:${gh}em`}>
+  <span class="graff-text">{text}</span>
+</span>

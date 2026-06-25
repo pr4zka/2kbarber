@@ -1,0 +1,22 @@
+---
+// Goteo realista (máscara de la imagen de referencia). Las gotas nacen DENTRO
+// de las letras (solapan hacia arriba) y caen, para que la palabra se "derrita".
+// El padre debe ser position: relative.
+interface Props {
+  color?: string; // color de la pintura
+  top?: string; // desde qué % de la altura del texto nacen las gotas
+  height?: string; // largo total del goteo (em)
+  class?: string;
+}
+const {
+  color = "var(--accent)",
+  top = "62%",
+  height = "1.2em",
+  class: className = "",
+} = Astro.props;
+---
+
+<span
+  class={`drips-img ${className}`}
+  style={`--drip-color:${color}; --drip-top:${top}; --drip-h:${height}`}
+  aria-hidden="true"></span>

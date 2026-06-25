@@ -1,0 +1,63 @@
+---
+// Hero con escena Three.js de fondo (partículas de spray) + título (PNG).
+---
+
+<section
+  id="top"
+  class="relative flex h-[100svh] w-full items-center justify-center overflow-hidden"
+>
+  <!-- Canvas Three.js (spray de partículas) -->
+  <canvas id="hero-canvas" class="absolute inset-0 h-full w-full"></canvas>
+
+  <!-- Degradado de viñeta -->
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.85)_100%)]"
+  >
+  </div>
+
+  <!-- Spray decorativo -->
+  <div class="spray-deco left-[6%] top-[18%] h-64 w-64 rotate-[-8deg] md:h-96 md:w-96"></div>
+  <div class="spray-deco right-[4%] bottom-[14%] h-56 w-56 rotate-[12deg] md:h-80 md:w-80"></div>
+
+  <!-- Contenido -->
+  <div class="relative z-10 flex flex-col items-center px-6 text-center">
+    <h1 class="sr-only">2K Barber Shop</h1>
+    <img
+      src="/titulo.png"
+      alt="2K Barber Shop"
+      data-hero="title"
+      class="w-[92vw] max-w-2xl md:w-[68vw] md:max-w-3xl"
+    />
+
+    <p
+      data-hero="sub"
+      class="mt-16 max-w-md text-sm text-white/70 md:mt-12 md:text-base"
+    >
+      No es un corte. Es un ritual. Estilo street, manos de rey.
+      Reservá tu lugar en la silla.
+    </p>
+
+    <div data-hero="cta" class="mt-9 flex flex-col items-center gap-4 sm:flex-row">
+      <a
+        href="#reserva"
+        class="group relative overflow-hidden rounded-full bg-[var(--accent)] px-8 py-4 text-sm font-bold uppercase tracking-widest text-black transition-transform hover:scale-105"
+      >
+        Reservá tu turno
+      </a>
+      <a
+        href="#servicios"
+        class="text-sm font-medium uppercase tracking-widest text-white/70 underline-offset-8 hover:text-white hover:underline"
+      >
+        Ver servicios
+      </a>
+    </div>
+  </div>
+
+  <!-- Indicador de scroll -->
+  <div
+    data-hero="scroll"
+    class="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-[0.6rem] uppercase tracking-[0.4em] text-white/40"
+  >
+    Scrolleá ↓
+  </div>
+</section>

@@ -1,0 +1,104 @@
+---
+// Formulario de reserva — envía nombre, correo, número al backend.
+import GraffitiTitle from "../GraffitiTitle.astro";
+---
+
+<section
+  id="reserva"
+  class="relative overflow-hidden bg-[var(--bg-deep,#050505)] py-28"
+>
+  <div
+    class="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-[var(--accent)] opacity-20 blur-[120px]"
+  >
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-xl px-6 text-center">
+    <p class="font-tag text-base tracking-wide text-[var(--accent)]">// tu lugar te espera</p>
+    <h2 class="display mx-auto mt-2 -skew-x-6 text-5xl leading-[1.1] md:text-7xl">
+      <GraffitiTitle text="Reservá" color="#ffffff" dripScale={0.45} />
+      <br />
+      <GraffitiTitle text="tu turno" color="var(--accent)" dripScale={0.8} />
+    </h2>
+    <p class="mt-4 text-sm text-white/60">
+      Dejanos tus datos y te confirmamos el turno. Simple, rápido, sin vueltas.
+    </p>
+
+    <form id="reserva-form" class="mt-10 flex flex-col gap-4 text-left" novalidate>
+      <div>
+        <label for="nombre" class="mb-1.5 block text-xs uppercase tracking-widest text-white/50"
+          >Nombre</label
+        >
+        <input
+          id="nombre"
+          name="nombre"
+          type="text"
+          autocomplete="name"
+          placeholder="Tu nombre"
+          required
+          class="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3.5 text-white placeholder:text-white/30 outline-none transition-colors focus:border-[var(--accent)]"
+        />
+      </div>
+
+      <div>
+        <label for="correo" class="mb-1.5 block text-xs uppercase tracking-widest text-white/50"
+          >Correo</label
+        >
+        <input
+          id="correo"
+          name="correo"
+          type="email"
+          autocomplete="email"
+          placeholder="tucorreo@mail.com"
+          required
+          class="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3.5 text-white placeholder:text-white/30 outline-none transition-colors focus:border-[var(--accent)]"
+        />
+      </div>
+
+      <div>
+        <label for="numero" class="mb-1.5 block text-xs uppercase tracking-widest text-white/50"
+          >Número</label
+        >
+        <input
+          id="numero"
+          name="numero"
+          type="tel"
+          autocomplete="tel"
+          placeholder="+595 9xx xxx xxx"
+          required
+          class="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3.5 text-white placeholder:text-white/30 outline-none transition-colors focus:border-[var(--accent)]"
+        />
+      </div>
+
+      <div>
+        <span class="mb-2 block text-xs uppercase tracking-widest text-white/50">Elegí el día</span>
+        <div id="cal" class="rounded-2xl border border-white/15 bg-white/5 p-4"></div>
+      </div>
+
+      <div>
+        <span class="mb-2 block text-xs uppercase tracking-widest text-white/50">Elegí la hora</span>
+        <div id="slots" class="flex flex-wrap gap-2">
+          <span class="text-sm text-white/30">Elegí un día para ver los horarios disponibles.</span>
+        </div>
+      </div>
+
+      <input type="hidden" name="fecha" id="fecha" />
+      <input type="hidden" name="hora" id="hora" />
+
+      <button
+        type="submit"
+        id="reserva-submit"
+        class="mt-2 rounded-full bg-[var(--accent)] px-8 py-4 text-sm font-bold uppercase tracking-widest text-black transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        Confirmar turno
+      </button>
+
+      <p
+        id="reserva-msg"
+        class="min-h-[1.25rem] text-center text-sm"
+        role="status"
+        aria-live="polite"
+      >
+      </p>
+    </form>
+  </div>
+</section>

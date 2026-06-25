@@ -221,6 +221,21 @@ html.lenis, html.lenis body { height: auto; }
   filter: drop-shadow(0 0 8px rgba(253, 54, 146, 0.5));
 }
 
+/* Carrusel de servicios (scroll horizontal nativo) */
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.services-viewport {
+  cursor: grab;
+  scroll-padding-left: 1.25rem;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+.services-viewport.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
 /* Halo neón reutilizable */
 .neon { text-shadow: 0 0 14px rgba(253, 54, 146, 0.7), 0 0 40px rgba(253, 54, 146, 0.35); }
 

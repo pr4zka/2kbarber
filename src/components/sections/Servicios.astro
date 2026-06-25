@@ -38,15 +38,19 @@ const servicios = [
     </h2>
   </div>
 
-  <!-- Track horizontal (pinned por GSAP en desktop; scroll natural en mobile) -->
-  <div class="services-viewport mt-14 overflow-hidden">
-    <div class="services-track flex gap-6 px-5 md:px-10">
-      {
-        servicios.map((s) => (
-          <article class="service-card group relative flex h-[60vh] w-[80vw] shrink-0 flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-[var(--surface,#141414)] p-8 md:w-[42vw] lg:w-[34vw]">
-            <span class="display text-7xl text-white/5 transition-colors group-hover:text-[var(--accent)]/20 md:text-8xl">
-              {s.n}
-            </span>
+  <!-- Carrusel horizontal con scroll nativo (swipe en mobile; trackpad/rueda/drag en desktop) -->
+  <div class="mb-4 mt-8 px-5 md:px-10">
+    <p class="text-xs uppercase tracking-[0.3em] text-white/40">Deslizá para ver más →</p>
+  </div>
+  <div
+    class="services-viewport no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-6 md:px-10"
+  >
+    {
+      servicios.map((s) => (
+        <article class="service-card group relative flex h-[58vh] w-[78vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-[var(--surface,#141414)] p-8 sm:w-[60vw] md:w-[42vw] lg:w-[32vw]">
+          <span class="display text-7xl text-white/5 transition-colors group-hover:text-[var(--accent)]/20 md:text-8xl">
+            {s.n}
+          </span>
             <div>
               <h3 class="display text-4xl text-white md:text-5xl">{s.titulo}</h3>
               <p class="mt-3 max-w-xs text-sm text-white/60">{s.desc}</p>
@@ -61,9 +65,8 @@ const servicios = [
               </div>
             </div>
             <div class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[var(--accent)] opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-20" />
-          </article>
-        ))
-      }
-    </div>
+        </article>
+      ))
+    }
   </div>
 </section>

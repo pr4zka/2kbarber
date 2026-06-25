@@ -69,27 +69,48 @@ export function animateHero() {
     });
 }
 
-// 3) Servicios: scroll horizontal pinneado (solo desktop).
+// 3) Servicios: carrusel con scroll horizontal nativo.
+//    Mobile -> swipe nativo. Desktop -> rueda del mouse + arrastre.
 export function initServicios() {
-  if (reduce()) return;
-  const track = document.querySelector<HTMLElement>(".services-track");
-  const section = document.querySelector<HTMLElement>("#servicios");
-  if (!track || !section || window.innerWidth < 768) return;
+  const vp = document.querySelector<HTMLElement>(".services-viewport");
+  if (!vp) return;
 
-  const scrollAmount = () => track.scrollWidth - window.innerWidth + 40;
-
-  gsap.to(track, {
-    x: () => -scrollAmount(),
-    ease: "none",
-    scrollTrigger: {
-      trigger: section,
-      start: "top top",
-      end: () => `+=${scrollAmount()}`,
-      pin: true,
-      scrub: 1,
-      invalidateOnRefresh: true,
+  // Rueda vertical -> scroll horizontal (cede a la página en los extremos).
+  vp.addEventListener(
+    "wheel",
+    (e) => {
+      if (vp.scrollWidth <= vp.clientWidth) return;
+      const delta = e.deltaY;
+      const atStart = vp.scrollLeft <= 0;
+      const atEnd = vp.scrollLeft + vp.clientWidth >= vp.scrollWidth - 1;
+      if ((delta < 0 && atStart) || (delta > 0 && atEnd)) return;
+      e.preventDefault();
+      vp.scrollLeft += delta;
     },
+    { passive: false },
+  );
+
+  // Arrastrar con el mouse (solo desktop; en touch va el scroll nativo).
+  let down = false;
+  let startX = 0;
+  let startLeft = 0;
+  vp.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse") return;
+    down = true;
+    startX = e.clientX;
+    startLeft = vp.scrollLeft;
+    vp.classList.add("dragging");
   });
+  vp.addEventListener("pointermove", (e) => {
+    if (!down) return;
+    vp.scrollLeft = startLeft - (e.clientX - startX);
+  });
+  const end = () => {
+    down = false;
+    vp.classList.remove("dragging");
+  };
+  vp.addEventListener("pointerup", end);
+  vp.addEventListener("pointerleave", end);
 }
 
 // 4) Reveals genéricos por scroll.

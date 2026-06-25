@@ -3,8 +3,8 @@
 // ajustá PUBLIC_CITAS_PATH en .env o el payload/headers acá abajo.
 
 const BASE = import.meta.env.PUBLIC_API_BASE ?? "https://api.pr4zka.online/api";
-const CITAS_PATH = import.meta.env.PUBLIC_CITAS_PATH ?? "/citas";
-const HORARIOS_PATH = import.meta.env.PUBLIC_HORARIOS_PATH ?? "/horarios";
+const CITAS_PATH = import.meta.env.PUBLIC_CITAS_PATH ?? "/public/turnos";
+const HORARIOS_PATH = import.meta.env.PUBLIC_HORARIOS_PATH ?? "/public/horarios";
 
 export interface CitaPayload {
   nombre: string;

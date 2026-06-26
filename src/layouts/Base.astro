@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Analytics from "@vercel/analytics/astro";
 import { SITE_URL, business, localBusinessJsonLd } from "../lib/business";
 
 interface Props {
@@ -70,5 +71,6 @@ const ogImage = new URL("/logo.png", SITE_URL).href;
   </head>
   <body class="grain">
     <slot />
+    <Analytics />
   </body>
 </html>

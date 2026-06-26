@@ -54,10 +54,10 @@ export function waLink(wa: string): string {
 // Indicaciones paso a paso hacia el local (abre Google Maps con la ruta)
 export const directionsLink = `https://www.google.com/maps/dir/?api=1&destination=${business.lat},${business.lng}`;
 
-// Mapa embebido — el `(Etiqueta)` fuerza un pin visible con el nombre del local
-export const mapEmbed = `https://maps.google.com/maps?q=${business.lat},${business.lng}(${encodeURIComponent(
-  business.name,
-)})&z=17&hl=es&output=embed`;
+// Mapa embebido — URL oficial de Google Maps ("Compartir → Insertar un mapa").
+// El token `pb=` resuelve el local exacto con su marcador y nombre.
+export const mapEmbed =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d717.2664832830986!2d-57.490896406136414!3d-25.25879294007509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da5538b95d603%3A0x316e0e6d3b72d88a!2s2k16barbershop!5e1!3m2!1ses-419!2sar!4v1782503645779!5m2!1ses-419!2sar";
 
 export const primaryPhone =
   business.phones.find((p) => p.primary) ?? business.phones[0];

@@ -51,6 +51,14 @@ export function waLink(wa: string): string {
   return `https://wa.me/${wa}?text=${waMessage}`;
 }
 
+// Indicaciones paso a paso hacia el local (abre Google Maps con la ruta)
+export const directionsLink = `https://www.google.com/maps/dir/?api=1&destination=${business.lat},${business.lng}`;
+
+// Mapa embebido — el `(Etiqueta)` fuerza un pin visible con el nombre del local
+export const mapEmbed = `https://maps.google.com/maps?q=${business.lat},${business.lng}(${encodeURIComponent(
+  business.name,
+)})&z=17&hl=es&output=embed`;
+
 export const primaryPhone =
   business.phones.find((p) => p.primary) ?? business.phones[0];
 

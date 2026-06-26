@@ -1,5 +1,5 @@
 ---
-import { business, waLink } from "../lib/business";
+import { business, waLink, directionsLink } from "../lib/business";
 const year = new Date().getFullYear();
 ---
 
@@ -50,12 +50,12 @@ const year = new Date().getFullYear();
           }
           <li>
             <a
-              href={business.mapsPlace}
+              href={directionsLink}
               target="_blank"
               rel="noopener"
               class="inline-flex items-center gap-2 hover:text-white"
             >
-              <span aria-hidden="true">📍</span> Cómo llegar
+              <span aria-hidden="true">🧭</span> Cómo llegar
             </a>
           </li>
           <li><a href="#reserva" class="hover:text-white">Reservar turno</a></li>

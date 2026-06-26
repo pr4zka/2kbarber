@@ -1,7 +1,7 @@
 ---
 // Formulario de reserva — envía nombre, correo, número al backend.
 import GraffitiTitle from "../GraffitiTitle.astro";
-import { business, waLink } from "../../lib/business";
+import { business, waLink, directionsLink, mapEmbed } from "../../lib/business";
 ---
 
 <section
@@ -127,25 +127,34 @@ import { business, waLink } from "../../lib/business";
     <!-- Ubicación -->
     <div class="mt-12 text-center">
       <p class="font-tag text-base tracking-wide text-[var(--accent)]">// dónde estamos</p>
-      <a
-        href={business.mapsPlace}
-        target="_blank"
-        rel="noopener"
-        class="mt-2 inline-flex items-center gap-2 text-sm text-white/70 transition-colors hover:text-white"
-      >
+      <p class="mt-2 inline-flex items-center gap-2 text-sm text-white/70">
         <span aria-hidden="true">📍</span> {business.street}, {business.city}, Paraguay
-      </a>
-      <div class="mt-6 overflow-hidden rounded-2xl border border-white/10">
+      </p>
+
+      <div class="relative mt-6 overflow-hidden rounded-2xl border border-white/10">
         <iframe
           title="Ubicación de 2K16 Barber Shop en Google Maps"
-          src={`https://www.google.com/maps?q=${business.lat},${business.lng}&z=17&output=embed`}
+          src={mapEmbed}
           width="100%"
-          height="320"
+          height="380"
           style="border:0"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen></iframe>
       </div>
+
+      <!-- Cómo llegar -->
+      <a
+        href={directionsLink}
+        target="_blank"
+        rel="noopener"
+        class="mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-7 py-3.5 text-sm font-bold uppercase tracking-widest text-black transition-transform hover:scale-[1.03]"
+      >
+        <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current" aria-hidden="true">
+          <path d="M21.71 11.29l-9-9a1 1 0 00-1.42 0l-9 9a1 1 0 000 1.42l9 9a1 1 0 001.42 0l9-9a1 1 0 000-1.42zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5z" />
+        </svg>
+        Cómo llegar
+      </a>
     </div>
   </div>
 </section>

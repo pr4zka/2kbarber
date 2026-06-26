@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://2kbarber.pr4zka.online/sitemap.xml
